@@ -29,7 +29,6 @@ input {
     width: 1000px;
     display: block;
     margin: auto;
-    margin-left: 5px;
 }
 
 button {
@@ -46,8 +45,9 @@ button {
     margin: auto;   
     height: 50px;
     margin-top: 10px;
-
+    margin-left: 5px;
 }
+
 ul {
     overflow-y: scroll;
     list-style-type: none;
