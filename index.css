@@ -45,6 +45,7 @@ button {
 }
    
   ul {
+    text-align: center;
     overflow-y: scroll;
     list-style-type: none;
     font-family: "Open Sans", sans-serif;
