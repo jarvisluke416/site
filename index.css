@@ -22,7 +22,6 @@ input {
     background-color: #DCE1EB;
     border: 0;
     padding: 15px;
-    border-radius: 8px;
     font-size: 20px;
     text-align: center;
     font-family: "Open Sans", sans-serif;
@@ -40,7 +39,6 @@ button {
     background-color: #AC485A;
     border: 0;
     padding: 15px;
-    border-radius: 8px;
     font-size: 20px;
     text-align: center;
     width: 1000px;
