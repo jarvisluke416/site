@@ -27,6 +27,8 @@ input {
     font-family: "Open Sans", sans-serif;
     height: 100px;
     width: 975px;
+     margin-left: 275px;
+
 }
 
 button {
@@ -39,8 +41,9 @@ button {
     text-align: center;
     font-family: "Open Sans", sans-serif;
     width: 1000px;
-
-    ul {
+    margin-left: 275px;
+   
+  ul {
     overflow-y: scroll;
     list-style-type: none;
     font-family: "Open Sans", sans-serif;
