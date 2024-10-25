@@ -41,11 +41,8 @@ button {
     text-align: center;
     font-family: "Open Sans", sans-serif;
     width: 1000px;
-    display: block;
-    margin: auto;   
     height: 50px;
     margin-top: 10px;
-    margin-left: 5px;
 }
 
 ul {
