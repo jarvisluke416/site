@@ -31,6 +31,7 @@ input {
     display: flex; 
     align-items: center;
     justify-content: center;
+    margin: auto;
 }
 
 button {
@@ -46,6 +47,7 @@ button {
     display: flex; 
     align-items: center;
     justify-content: center;
+    margin: auto;
 }
    
   ul {
