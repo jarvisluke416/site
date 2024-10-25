@@ -16,6 +16,10 @@
     width: 100%;
   }
 
+.vertical-center2 {
+    position: relative;
+}
+
 input {
     color: #432000;
     background-color: #DCE1EB;
@@ -27,8 +31,6 @@ input {
     font-family: "Open Sans", sans-serif;
     height: 100px;
     width: 1000px;
-    display: block;
-    margin: auto;
 }
 
 .vertical-center {
