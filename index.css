@@ -17,7 +17,7 @@
   }
 
 .vertical-center2 {
-    position: relative;
+    position: center;
 }
 
 input {
@@ -47,11 +47,8 @@ button {
     text-align: center;
     font-family: "Open Sans", sans-serif;
     width: 1000px;
-    height: 50px;
-    margin-top: 10px;
-}
 
-ul {
+    ul {
     overflow-y: scroll;
     list-style-type: none;
     font-family: "Open Sans", sans-serif;
