@@ -49,9 +49,9 @@ button {
     text-align: center;
     overflow-y: scroll;
     list-style-type: none;
-    font-family: "Open Sans", sans-serif;
+    font-family: "DynaPuff", system-ui;
     font-optical-sizing: auto;
-    font-weight: 1000;
+    font-weight: 700;
     font-style: normal;
     padding-top: 25px;
     font-variation-settings:
