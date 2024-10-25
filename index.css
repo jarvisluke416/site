@@ -31,6 +31,10 @@ input {
     margin: auto;
 }
 
+.vertical-center {
+    position: relative;
+}
+    
 button {
     color: #FDFDFD;
     background-color: #AC485A;
