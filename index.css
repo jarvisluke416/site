@@ -29,6 +29,7 @@ input {
     width: 1000px;
     display: block;
     margin: auto;
+    margin-left: 5px;
 }
 
 button {
