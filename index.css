@@ -16,10 +16,6 @@
     width: 100%;
   }
 
-.vertical-center2 {
-    position: center;
-}
-
 input {
     color: #432000;
     background-color: #DCE1EB;
@@ -33,10 +29,6 @@ input {
     width: 1000px;
 }
 
-.vertical-center {
-    position: relative;
-}
-    
 button {
     color: #FDFDFD;
     background-color: #AC485A;
