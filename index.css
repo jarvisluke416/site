@@ -28,6 +28,7 @@ input {
     height: 100px;
     width: 975px;
     display: flex; 
+    align-items: center;
     justify-content: center;
 }
 
@@ -42,6 +43,7 @@ button {
     font-family: "Open Sans", sans-serif;
     width: 1000px;
     display: flex; 
+    align-items: center;
     justify-content: center;
 }
    
