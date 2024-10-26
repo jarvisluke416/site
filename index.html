@@ -25,6 +25,13 @@ body  {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+        <script>
+    function scrollToBottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+    history.scrollRestoration = "manual";
+    window.onload = scrollToBottom;
+       </script>
  </head>
     <body> 
      
