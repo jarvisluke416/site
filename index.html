@@ -25,63 +25,7 @@ body  {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-         <script language=javascript>
-//change 1 to another integer to alter the scroll speed. Greater is faster
-var speed=1
-var downspeed= 2
-var stopspeed= 0
-var currentpos=0
-var alt = 0
-var curpos1 = 100
-var curpos2 = 1
-function initialize(){
- startit()
-}
-function goup(e) {
- speed = stopspeed
-}
-function godown(e) {
- speed = downspeed
-}
-function scrollwindow(){
- if (document.all) {
-  temp=document.body.scrollDown;
- }
- else {
-  temp=window.pageYOffset;
- }
- if (alt==0) {
-  alt=1;
-  curpos2 = temp;
- }
- else {
-  alt=0;
-  curpos1 = temp;
- }
- if ((curpos1==curpos2) && (speed > 0)) {
-  currentpos = 0;
-  curpos1 = 100;
- }
- else {
-  if (document.all) {
-   currentpos=document.body.scrollDown+speed;
-  }
-  else {
-	currentpos=window.pageYOffset+speed;
-  }
- }
- if (speed > 0) { window.scrollTo(0,currentpos); }
- setTimeout("scrollwindow()", 20);
-}
-function startit(){
- setTimeout("scrollwindow()", 20)
-}
-window.onload=initialize
-document.onmousedown = goup;
-document.ondblclick = godown;
-
-</script> 
-  </head>
+</head>
     <body> 
      <script>
   /*confetti animation*/
