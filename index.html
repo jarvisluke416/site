@@ -31,49 +31,8 @@ window.onload = function(){
  }
 </script>
 </head>
-    <body onload="window.location.hash = 'footer'"> 
-     <script>
-  /*confetti animation*/
-var count = 1000;
-var defaults = {
-origin: { y: 0.7 },
-};
-function fire(particleRatio, opts) {
-confetti(
-  Object.assign({}, defaults, opts, {
-    particleCount: Math.floor(count * particleRatio),
-  })
-);
-}
-fire(0.25, {
-spread: 26,
-startVelocity: 55,
-});
-fire(0.2, {
-spread: 60,
-});
-fire(0.35, {
-spread: 100,
-decay: 0.91,
-scalar: 0.8,
-});
-fire(0.1, {
-spread: 120,
-startVelocity: 25,
-decay: 0.92,
-scalar: 1.2,
-});
-fire(0.1, {
-spread: 120,
-startVelocity: 45,
-});
-
-/*Phone input masking*/
-var cleave = new Cleave(".input-phone", {
-phone: true,
-phoneRegionCode: "US",
-});
-</script>
+    <body> 
+    
       <center>
       <header id="Protest Strike">Anonym<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgauTmvBC7TaihcTSu_VCbh0E9TN1cx3xh8h9g3DCcOFCfCv0GSdFXYNPCmNjL5TRA0uDhs0jNfbvLxO5MqB6E1k8lPAnh-UO6gZsrWYCVSvEZMgxbGrhcOGUoo2ZjuoDymYEPUSRbIDmZNd-0Gq0lf2rhXIBuIv6v2KEubo-h-W4JkOf4qnNiw7Cr3/s1600/anarchy.png" width="50">us Graffiti Chat</header></center>
      <div class="container" >
@@ -130,7 +89,48 @@ Based on the true story of Ricky Kasso.. Drugs, satanism, and murder in the uppe
 <a href="https://www.kcci.com/article/israel-killed-hezbollah-official-groups-next-leader/62686585" target="_blank">Israel says it killed a Hezbollah official expected to be the groups next leader</a></br></br></br></br>
 <a href="https://www.pal-item.com/story/news/local/2024/10/21/chicagos-pizza-opens-for-business-in-cambridge-city/75716928007/" target="_blank">Chicagos Pizza sees 1,000 customers in 1st week of business in Cambridge City</a></br></br></br></br></br>
 </marquee></center>
-        <footer id="footer"></footer>
+         <script>
+  /*confetti animation*/
+var count = 1000;
+var defaults = {
+origin: { y: 0.7 },
+};
+function fire(particleRatio, opts) {
+confetti(
+  Object.assign({}, defaults, opts, {
+    particleCount: Math.floor(count * particleRatio),
+  })
+);
+}
+fire(0.25, {
+spread: 26,
+startVelocity: 55,
+});
+fire(0.2, {
+spread: 60,
+});
+fire(0.35, {
+spread: 100,
+decay: 0.91,
+scalar: 0.8,
+});
+fire(0.1, {
+spread: 120,
+startVelocity: 25,
+decay: 0.92,
+scalar: 1.2,
+});
+fire(0.1, {
+spread: 120,
+startVelocity: 45,
+});
+
+/*Phone input masking*/
+var cleave = new Cleave(".input-phone", {
+phone: true,
+phoneRegionCode: "US",
+});
+</script>
 <script src="functions.js" type="module"></script>
 <script src="index.js" type="module"></script>
    </body>
