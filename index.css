@@ -6,6 +6,8 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden; /* Hide vertical scrollbar */
     position: relative;
+    height: 500px;
+
 }
 
 .protest-strike-regular, header {
@@ -54,7 +56,6 @@ button {
 }
    
   ul {
-    height: 500px;
     text-align: center;
     overflow-y: scroll;
     list-style-type: none;
