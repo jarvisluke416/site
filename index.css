@@ -54,6 +54,7 @@ button {
 }
    
   ul {
+    height: 500px;
     text-align: center;
     overflow-y: scroll;
     list-style-type: none;
