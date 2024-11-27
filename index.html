@@ -7,15 +7,22 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    <meta name="viewpoort" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Fixed typo here 'viewpoort' to 'viewport' -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
     <style>
-        body  {
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-y: auto;  /* Ensures vertical scrolling if content overflows */
+        }
+
+        body {
             background-image: url("https://media.istockphoto.com/id/1158483479/photo/gray-brick-wall-background.jpg?s=612x612&w=0&k=20&c=kDR8kH9fL-Iom7EjTlCRnxRV9Y_BgTbMnak5NnME-4w=");
-            background-color: 0,0,0,0.7;
+            background-color: rgba(0, 0, 0, 0.7);
         }
     </style>
 </head>
