@@ -1,3 +1,19 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
+import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+
+const appSettings = {
+    databaseURL: "https://realtime-database-65290-default-rtdb.firebaseio.com/"
+}
+
+
+const app = initializeApp(appSettings)
+const database  = getDatabase(app)
+const shoppingListInDB = ref(database, "shoppingList")
+
+const inputFieldEl = document.getElementById("input-field")
+const addButtonEl = document.getElementById("add-button")
+const shoppingListEl = document.getElementById("shopping-list")
+
 function addUser() {
     var userName = document.getElementById('username').value;
     if (userName === '') {
