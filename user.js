@@ -21,6 +21,6 @@ addButtonEl.addEventListener("click", function() {
         push(usersInDB, inputValue)
 
 
-    console.log(`${inputValue} added to database`)
-})
+/*    console.log(`${inputValue} added to database`)
+})*/
 
