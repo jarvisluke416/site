@@ -20,11 +20,40 @@
             <li></li>
           </ul>
         <input type="text" id="input-field" placeholder="Business or Personal Name, Location, Occupation, Link">
+          <script>
+              // Wait for the DOM to load before executing
+document.addEventListener('DOMContentLoaded', () => {
+    const inputField = document.getElementById('input-field');
+    const addButton = document.getElementById('add-button');
+    const shoppingList = document.getElementById('shopping-list');
+
+    // Function to add the item to the shopping list
+    function addItemToList() {
+        const inputText = inputField.value.trim();
+        
+        if (inputText !== '') {
+            const newItem = document.createElement('li');
+            newItem.textContent = inputText;
+            shoppingList.appendChild(newItem);
+            inputField.value = '';  // Clear input field after adding item
+        }
+    }
+
+    // Event listener for the 'Add to Wall' button
+    addButton.addEventListener('click', addItemToList);
+
+    // Event listener for the Enter key press in the input field
+    inputField.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            addItemToList();
+        }
+    });
+});
+          </script>
            <button id="add-button">Add to Wall</button>
           
       </div>
         <script src="functions.js" type="module"></script>
         <script src="index.js" type="module"></script>
-        <script src="button.js" type="module"></script>
 </body>
 </html>
