@@ -69,3 +69,5 @@ function appendItemToShoppingListEl(item) {
     
     shoppingListEl.append(newEl)
 }
+
+window.scrollTo(0, document.body.scrollHeight);
