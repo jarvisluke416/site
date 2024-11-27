@@ -1,19 +1,19 @@
 #userlist {
    width 150px;
-   position: relative;
+   position: fixed;
    margin-left: 10px;
 }
 #listbutton {
    width: 150px;
    height: 100px;
-   position: relative;
+   position: fixed;
    margin-left: 10px;
 }
 
 #username {
     width: 100px;
     height: 40px;
-    position: relative;
+    position: fixed;
     margin-left: 10px;
 
 }
