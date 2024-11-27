@@ -11,60 +11,66 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="index.css">
         <style>
-body  {
-  background-image: url("https://media.istockphoto.com/id/1158483479/photo/gray-brick-wall-background.jpg?s=612x612&w=0&k=20&c=kDR8kH9fL-Iom7EjTlCRnxRV9Y_BgTbMnak5NnME-4w=");
-  background-color: 0,0,0,0.7;
-}
-</style>
-</head>
+        body  {
+          background-image: url("https://media.istockphoto.com/id/1158483479/photo/gray-brick-wall-background.jpg?s=612x612&w=0&k=20&c=kDR8kH9fL-Iom7EjTlCRnxRV9Y_BgTbMnak5NnME-4w=");
+          background-color: 0,0,0,0.7;
+        }
+        </style>
+    </head>
     <body>
-         <center><a href="https://jarvisluke416.github.io/site/" target="_blank"><header class="Protest Strike">Anonym<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgauTmvBC7TaihcTSu_VCbh0E9TN1cx3xh8h9g3DCcOFCfCv0GSdFXYNPCmNjL5TRA0uDhs0jNfbvLxO5MqB6E1k8lPAnh-UO6gZsrWYCVSvEZMgxbGrhcOGUoo2ZjuoDymYEPUSRbIDmZNd-0Gq0lf2rhXIBuIv6v2KEubo-h-W4JkOf4qnNiw7Cr3/s1600/anarchy.png" height="40" width="50">us Graffiti Chat</header></a></center>  
+        <center><a href="https://jarvisluke416.github.io/site/" target="_blank"><header class="Protest Strike">Anonym<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgauTmvBC7TaihcTSu_VCbh0E9TN1cx3xh8h9g3DCcOFCfCv0GSdFXYNPCmNjL5TRA0uDhs0jNfbvLxO5MqB6E1k8lPAnh-UO6gZsrWYCVSvEZMgxbGrhcOGUoo2ZjuoDymYEPUSRbIDmZNd-0Gq0lf2rhXIBuIv6v2KEubo-h-W4JkOf4qnNiw7Cr3/s1600/anarchy.png" height="40" width="50">us Graffiti Chat</header></a></center>  
 
+        <div class="container">
+            <ul id="shopping-list">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <input type="text" id="input-field" placeholder="Business or Personal Name, Location, Occupation, Link">
+            <button id="add-button">Add to Wall</button>
+        </div>
 
+        <script>
+            // Scroll to the bottom of the page when it loads
+            window.onload = function() {
+                window.scrollTo(0, document.body.scrollHeight);
+            };
+            
+            document.addEventListener('DOMContentLoaded', () => {
+                const inputField = document.getElementById('input-field');
+                const addButton = document.getElementById('add-button');
+                const shoppingList = document.getElementById('shopping-list');
 
-      <div class="container" >
-         <ul id="shopping-list">
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
-        <input type="text" id="input-field" placeholder="Business or Personal Name, Location, Occupation, Link">
-          <script>
-              // Wait for the DOM to load before executing
-document.addEventListener('DOMContentLoaded', () => {
-    const inputField = document.getElementById('input-field');
-    const addButton = document.getElementById('add-button');
-    const shoppingList = document.getElementById('shopping-list');
+                // Function to add the item to the shopping list
+                function addItemToList() {
+                    const inputText = inputField.value.trim();
+                    
+                    if (inputText !== '') {
+                        const newItem = document.createElement('li');
+                        newItem.textContent = inputText;
+                        shoppingList.appendChild(newItem);
+                        inputField.value = '';  // Clear input field after adding item
+                        
+                        // Scroll to the bottom of the shopping list
+                        shoppingList.scrollTop = shoppingList.scrollHeight;
+                    }
+                }
 
-    // Function to add the item to the shopping list
-    function addItemToList() {
-        const inputText = inputField.value.trim();
-        
-        if (inputText !== '') {
-            const newItem = document.createElement('li');
-            newItem.textContent = inputText;
-            shoppingList.appendChild(newItem);
-            inputField.value = '';  // Clear input field after adding item
-        }
-    }
+                // Event listener for the 'Add to Wall' button
+                addButton.addEventListener('click', addItemToList);
 
-    // Event listener for the 'Add to Wall' button
-    addButton.addEventListener('click', addItemToList);
+                // Event listener for the Enter key press in the input field
+                inputField.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter') {
+                        addItemToList();
+                    }
+                });
+            });
+        </script>
 
-    // Event listener for the Enter key press in the input field
-    inputField.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-            addItemToList();
-        }
-    });
-});
-          </script>
-           <button id="add-button">Add to Wall</button>
-          
-      </div>
         <script src="functions.js" type="module"></script>
         <script src="index.js" type="module"></script>
-</body>
+    </body>
 </html>
