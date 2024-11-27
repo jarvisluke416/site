@@ -1,17 +1,17 @@
 #userlist {
    width 150px;
-   position: static;
+   position: relative;
 }
 #listbutton {
    width: 150px;
    height: 100px;
-   position: static;
+   position: relative;
 }
 
 #username {
     width: 100px;
     height: 40px;
-    position: static;
+    position: relative;
 
 }
 html, body {
