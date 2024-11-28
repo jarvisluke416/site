@@ -1,3 +1,30 @@
+.users {
+  position: relative;
+  right: 175px;
+  bottom: 350px;
+}
+
+.sideuserlist {
+  width: 100px;
+  position: relative;
+  right: 190px;
+  bottom: 375px;
+}
+
+.sideinput {
+  width: 92px;
+  height:25px;
+  position: relative;
+  right: 190px;
+  bottom: 350px;
+}
+.sidebutton {
+  width: 100px;
+  position: relative;
+  right: 190px;
+  bottom: 350px;
+}
+
 h3 {
 color: black;
 }
