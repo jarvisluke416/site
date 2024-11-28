@@ -17,8 +17,7 @@
     font-style: normal;
     background-color: white;
     color: #cc5500;
-    position: relative;
-    right: 100px;
+    position: fixed;
     width: 100%;
   }
 
