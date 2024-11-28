@@ -117,104 +117,34 @@
       <script src="functions.js" type="module"></script>
       <script src="index.js" type="module"></script>
         <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const inputField = document.getElementById('input-field');
-        const addButton = document.getElementById('add-button');
-        const shoppingList = document.getElementById('shopping-list');
-        const userInput = document.getElementById('user-input');
-        const addUserButton = document.getElementById('add-user-button');
-        const userList = document.getElementById('user-list');
+    // Example of rendering messages from the database
+    const databaseMessages = [
+        { username: 'John', message: 'Hello world!' },
+        { username: '', message: 'Anonymous message' },
+        { username: 'Jane', message: 'How are you?' }
+    ];
 
-        let currentUser = ''; // To track the currently signed-in user
+    const shoppingList = document.getElementById('shopping-list');
 
-        // Function to load existing messages from the database
-        function loadMessages(messages) {
-            messages.forEach((message) => {
-                const newItem = document.createElement('li');
-
-                // Check if the message has a username
-                if (message.username) {
-                    newItem.textContent = `${message.username}: ${message.text}`;
-                } else {
-                    newItem.textContent = message.text; // For older messages without a username
-                }
-
-                shoppingList.appendChild(newItem);
-            });
-        }
-
-        // Simulating a fetch of messages from the database
-        const databaseMessages = [
-            { text: 'hello' }, // A message without a username
-            { text: 'how are you?', username: 'Alice' }, // A message with a username
-            { text: 'welcome to the chat!' }, // Another message without a username
-        ];
-
-        // Load existing messages on page load
-        loadMessages(databaseMessages);
-
-        // Function to add a new chat message
-        function addItemToList() {
-            const inputText = inputField.value.trim();
-            if (inputText !== '') {
-                const newItem = document.createElement('li');
-
-                // Append the username to the message if the user is signed in
-                if (currentUser) {
-                    newItem.textContent = `${currentUser}: ${inputText}`;
-                } else {
-                    newItem.textContent = inputText; // For messages without a username
-                }
-
-                shoppingList.appendChild(newItem); // Add the message to the chat
-                inputField.value = ''; // Clear input field after adding item
-            }
-        }
-
-        // Function to add a user to the user list
-        function addUserToList() {
-            const userName = userInput.value.trim();
-            if (userName !== '') {
-                const newUser = document.createElement('li');
-                newUser.textContent = userName;
-                userList.appendChild(newUser);
-
-                // Set the current user to this username
-                currentUser = userName;
-
-                // Clear and hide the input field and button
-                userInput.value = '';
-                userInput.style.display = 'none';
-                addUserButton.style.display = 'none';
-
-                // Notify the user
-                alert(`You are signed in as ${currentUser}`);
+    // Function to render messages from the database
+    function renderMessages(messages) {
+        messages.forEach((msg) => {
+            const newItem = document.createElement('li');
+            if (msg.username) {
+                newItem.textContent = `${msg.username}: ${msg.message}`;
             } else {
-                alert("Please enter a username");
+                newItem.textContent = msg.message;
             }
-        }
-
-        // Event listener for the 'Add User' button
-        addUserButton.addEventListener('click', addUserToList);
-
-        // Event listener for the Enter key press in the username input field
-        userInput.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
-                addUserToList();
-            }
+            shoppingList.appendChild(newItem);
         });
+    }
 
-        // Event listener for the 'Add to Wall' button (Chat Message)
-        addButton.addEventListener('click', addItemToList);
-
-        // Event listener for the Enter key press in the chat input field
-        inputField.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
-                addItemToList();
-            }
-        });
+    // Render the messages on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        renderMessages(databaseMessages);
     });
 </script>
+
 
     </body>
 </html>
