@@ -100,5 +100,60 @@
     <script src="functions.js" type="module"></script>
     <script src="index.js" type="module"></script>
     <script src="users.js" type="module"></script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const editNameForm = document.getElementById('edit-name-form');
+    const newUsernameInput = document.getElementById('new-username-input');
+    const myNameSpan = document.getElementById('my-name');
+    const userInput = document.getElementById('user-input');
+    const addUserButton = document.getElementById('add-user-button');
+    let currentUser = '';  // Store the current username
+
+    // Function to handle username change
+    function changeUsername(event) {
+        event.preventDefault(); // Prevent form submission
+        const newUsername = newUsernameInput.value.trim();
+        
+        if (newUsername !== '') {
+            currentUser = newUsername;  // Update the current username
+            myNameSpan.textContent = newUsername;  // Update the displayed name
+            newUsernameInput.value = '';  // Clear the input field
+            alert('Your username has been changed to ' + newUsername); // Optional alert
+        } else {
+            alert('Please enter a valid username');
+        }
+    }
+
+    // Event listener for the form submission
+    editNameForm.addEventListener('submit', changeUsername);
+
+    // Function to add a user to the user list
+    function addUserToList() {
+        const username = userInput.value.trim();
+        if (username !== '') {
+            currentUser = username;  // Store the username for later use in the chat
+            const newUser = document.createElement('li');
+            newUser.textContent = username;
+            userList.appendChild(newUser);
+            userInput.value = '';  // Clear the input field
+            userInput.style.display = 'none';  // Hide the username input
+            addUserButton.style.display = 'none';  // Hide the SignIn button
+            myNameSpan.textContent = username;  // Display the current username in the control panel
+            alert('You are signed in as ' + username);  // Optionally alert the user
+        } else {
+            alert("Please enter a username");
+        }
+    }
+
+    // Event listener for the 'Add User' button
+    addUserButton.addEventListener('click', addUserToList);
+
+    // Event listener for the 'Enter' key press in the user input field
+    userInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            addUserToList();
+        }
+    });
+});
+
 </body>
 </html>
