@@ -1,64 +1,14 @@
-.users {
-  position: relative;
-  right: 175px;
-  bottom: 350px;
+/*.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #e02424;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Hide vertical scrollbar */
+/*    position: relative;
+    top: 550px;
 }
 
-.sideuserlist {
-  width: 100px;
-  position: relative;
-  right: 190px;
-  bottom: 375px;
-}
-
-.sideinput {
-  width: 92px;
-  height:25px;
-  position: relative;
-  right: 190px;
-  bottom: 350px;
-}
-.sidebutton {
-  width: 100px;
-  position: relative;
-  right: 190px;
-  bottom: 350px;
-}
-
-h3 {
-color: black;
-}
-#userlist {
-   width 150px;
-   position: relative;
-}
-#listbutton {
-   width: 150px;
-   height: 75px;
-   position: relative;
-}
-
-#username {
-    width: 100px;
-    height: 40px;
-    position: relative;
-
-}
-html, body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Rubik', sans-serif;
-    background-color: white; 
-    color: #50C878;
-    user-select: none;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    max-width: 1000px;
-    margin: 30px auto;
-}
 
 .protest-strike-regular, header {
     font-family: "Rubik Spray Paint", system-ui;
@@ -66,85 +16,73 @@ html, body {
     font-weight: 400;
     font-style: normal;
     background-color: white;
-    color: #50C878;
-    position: fixed;
-    width: 100%;
-    
-  }
-
-system-ui;
-    font-size: 400%;
-    font-weight: 400;
-    font-style: normal;
     color: #cc5500;
     position: fixed;
     width: 100%;
-    margin-top: 300px;
   }
 
 
-img {
-    width: 150px;
-    margin: 0 auto;
-}
-
 input {
-    color: #432000;
-    background-color: white;
-    border: 0;
-    padding: 15px;
-    border-radius: 8px;
-    font-size: 20px;
-    text-align: center;
-    font-family: 'Rubik' ,sans-serif;
-    margin: 10px 0;
-    height: 100px;
-
+    font-family: "DynaPuff", system-ui;
+    position: relative;
+    top: 575px;
+    left: 550px;
+    width: 400px;
 }
+
 
 button {
-    color: #50C878;
-    background-color: black;
-    border: 0;
-    padding: 15px;
-    border-radius: 8px;
-    font-size: 20px;
+    position: relative;
+    top: 620px;
+    left: 550px;
+    width: 408px;
+}
+   
+  ul {
     text-align: center;
-    font-family: 'Rubik' ,sans-serif;
+    overflow-y: scroll;
+    list-style-type: none;
+    font-family: "DynaPuff", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    padding-top: 25px;
+    font-variation-settings:
+      "wdth" 100;
 }
 
-ul li:hover {
-    background-color: black;
-    cursor: text;
- }
 
- ul {
-     list-style-type: none;
-     padding: 0;
-     display: flex;
-     flex-wrap: wrap;
-     gap: 0px;
+/* unvisited link */
+/*a:link {
+    color: rgb(14, 18, 14);
+    font-size: 50px;
+    margin-top: 0px;
+    font-weight: 1000;
+    text-decoration: none;
 
- }
+
+}
  
- ul li {
-    font-size: 20px;
-    background-color: black;
-    padding: 15px;
-    border-radius: 8px;
-    flex-grow: 1;
-    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2)
- }
+  /* visited link */
+ /* a:visited {
+    color: red;
+  }
  
-li {
-    display: row;
-    word-spacing: 3px; 
-    display: 750px;
-    padding: 1.3rem;
-    margin: 0.1rem;
-    width: 1000px;
-    border-radius: 15px;
-}
-  link {
-  color: blue;
-}
+  a:hover {
+    color: blue;
+  }
+ 
+  a:active {
+    color: blue;
+  }
+
+
+::-webkit-scrollbar {
+    width: 0px;
+  }
+ 
+  .form-wrapper {
+    position: fixed;
+    bottom: 0;
+    width: 60%;
+}*/
