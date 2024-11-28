@@ -31,10 +31,22 @@
 
         <div class="users"><h2>Users</h2></div>
         <ul class="sideuserlist" id="user-list"></ul>
-
+       
         <!-- Username input and sign-in button -->
         <input class="sideinput" type="text" id="user-input" placeholder="Name">
         <button class="sidebutton" id="add-user-button">SignIn</button>
+        <div class="control-panel">
+    <span class="mr-1">Chat as:</span>
+    <span class="my-name" id="my-name" title="Click to change your screen name"></span>
+    <form class="edit-name-form" id="edit-name-form">
+        <div class="input-group">
+            <input type="text" name="theName" class="form-control form-control-sm" id="new-username-input" placeholder="Enter new name">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-sm btn-primary">Change</button>
+            </div>
+        </div>
+    </form>
+</div>
 
         <script>
             // Get the elements
