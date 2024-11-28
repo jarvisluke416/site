@@ -1,3 +1,29 @@
+.users {
+  position: relative;
+  right: 175px;
+  bottom: 350px;
+}
+
+.sideuserlist {
+  width: 100px;
+  position: relative;
+  right: 190px;
+  bottom: 375px;
+}
+
+.sideinput {
+  width: 92px;
+  height:25px;
+  position: relative;
+  right: 190px;
+  bottom: 350px;
+}
+.sidebutton {
+  width: 100px;
+  position: relative;
+  right: 190px;
+  bottom: 350px;
+}
 h3 {
 color: black;
 }
@@ -29,7 +55,7 @@ html, body {
 .container {
     display: flex;
     flex-direction: column;
-    max-width: 1000px;
+    max-width: 750px;
     margin: 30px auto;
 }
 
@@ -42,7 +68,6 @@ html, body {
     color: #50C878;
     position: fixed;
     width: 100%;
-    
   }
 
 system-ui;
@@ -61,29 +86,31 @@ img {
     margin: 0 auto;
 }
 
-input {
+.biginput {
     color: #432000;
     background-color: #DCE1EB;
-    border: 0;
+    border: 2px;
     padding: 15px;
-    border-radius: 8px;
     font-size: 20px;
     text-align: center;
     font-family: 'Rubik' ,sans-serif;
-    margin: 10px 0;
-    height: 100px;
-
+    margin: 5px;
+    height: 50px;
+    position: relative;
+    top: 100px;
 }
 
-button {
-    color: #50C878;
-    background-color: black;
+.bigbutton {
+    color: ;
+    background-color: cyan;
     border: 0;
     padding: 15px;
     border-radius: 8px;
     font-size: 20px;
     text-align: center;
     font-family: 'Rubik' ,sans-serif;
+    position: relative;
+    top: 100px;
 }
 
 ul li:hover {
@@ -113,10 +140,11 @@ li {
     display: row;
     word-spacing: 3px; 
     display: 750px;
-    padding: 1.3rem;
     margin: 0.1rem;
-    width: 1000px;
+    width: 800px;
     border-radius: 15px;
+    position: relative;
+    top: 100px;
 }
   link {
   color: blue;
