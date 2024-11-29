@@ -70,4 +70,15 @@ function appendItemToShoppingListEl(item) {
     shoppingListEl.append(newEl)
 }
 
+const db = firebase.database();
+const messagesRef = db.ref('messages'); // assuming your messages are stored under 'messages'
+
+messagesRef
+  .orderByChild('timestamp') // order by timestamp field
+  .limitToLast(10)           // limit to the last 10 messages
+  .on('value', snapshot => {
+    const messages = snapshot.val();
+    // Now you can display the messages
+    console.log(messages);
+  });
 
