@@ -152,7 +152,7 @@ li {
     position: relative;
     top: 100px;
     z-index: 1;
-
+    line-height: 1.6;
 }
   link {
   color: blue;
