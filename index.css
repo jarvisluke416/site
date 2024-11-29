@@ -1,12 +1,12 @@
 .users {
-  position: relative;
+  position: fixed;
   right: 175px;
   bottom: 350px;
 }
 
 .sideuserlist {
   width: 100px;
-  position: relative;
+  position: fixed;
   right: 190px;
   bottom: 375px;
 }
@@ -14,13 +14,13 @@
 .sideinput {
   width: 92px;
   height:25px;
-  position: relative;
+  position: fixed;
   right: 190px;
   bottom: 350px;
 }
 .sidebutton {
   width: 100px;
-  position: relative;
+  position: fixed;
   right: 190px;
   bottom: 350px;
 }
@@ -29,7 +29,7 @@ color: black;
 }
 #userlist {
    width 150px;
-   position: relative;
+   position: fixed;
 }
 #listbutton {
    width: 150px;
