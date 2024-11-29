@@ -76,7 +76,6 @@ messagesRef
   .on('child_added', snapshot => {
     const message = snapshot.val();
     // Update the UI with the new message
-    console.log(message);
   });
 
 
