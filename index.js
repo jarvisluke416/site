@@ -70,6 +70,14 @@ function appendItemToShoppingListEl(item) {
     shoppingListEl.append(newEl)
 }
 
+messagesRef
+  .orderByChild('timestamp')
+  .limitToLast(10)
+  .on('child_added', snapshot => {
+    const newMessage = snapshot.val();
+    console.log('New message:', newMessage);
+    // Update your UI with this new message
+  });
 
 
 
