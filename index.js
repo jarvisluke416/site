@@ -70,34 +70,3 @@ function appendItemToShoppingListEl(item) {
     shoppingListEl.append(newEl)
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const shoppingList = document.getElementById('shopping-list');
-
-    // Reference to the Firebase database (or Firestore)
-    const messagesRef = database.ref('messages');  // For Realtime Database
-
-    // Query Firebase for the most recent 10 messages
-    messagesRef
-        .orderByChild('timestamp')  // Assuming messages have a 'timestamp' field
-        .limitToLast(10)  // Only get the last 10 messages
-        .on('value', snapshot => {
-            const messages = snapshot.val();  // Get the messages from the snapshot
-
-            // Clear previous messages in the list
-            shoppingList.innerHTML = '';
-
-            // Render the messages to the UI
-            if (messages) {
-                Object.values(messages).forEach(msg => {
-                    const newItem = document.createElement('li');
-                    if (msg.username) {
-                        newItem.textContent = `${msg.username}: ${msg.message}`;
-                    } else {
-                        newItem.textContent = msg.message;
-                    }
-                    shoppingList.appendChild(newItem);
-                });
-            }
-        });
-});
-
