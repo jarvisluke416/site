@@ -68,7 +68,6 @@ html, body {
     color: #50C878;
     position: fixed;
     width: 100%;
-    left: 100px;
     z-index: 6;
   }
 
