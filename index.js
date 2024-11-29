@@ -70,12 +70,4 @@ function appendItemToShoppingListEl(item) {
     shoppingListEl.append(newEl)
 }
 
-const messages = [];
 
-function addMessage(newMessage) {
-    messages.push(newMessage);
-    if (messages.length > 10) {
-        messages.shift(); // Remove the oldest message
-    }
-    renderMessages(messages);
-}
