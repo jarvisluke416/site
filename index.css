@@ -1,6 +1,7 @@
 .instructions {
   position: relative;
   left: 50px;
+  top: 25px;
   text-decoration: none;
   color: lime;
   z-index: 6;
@@ -107,6 +108,7 @@ img {
     margin: 5px;
     height: 10px;
     position: relative;
+    left: 25px;
     top: 10px;
 }
 
@@ -121,7 +123,9 @@ img {
     font-family: 'Rubik' ,sans-serif;
     position: relative;
     top: 40px;
+    right: 25px;
     width: 300px;
+    height: 25px;
 }
 
 ul li:hover {
