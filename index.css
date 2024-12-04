@@ -1,5 +1,6 @@
 .instructions {
   position: relative;
+  bottom: 100px;
   left: 50px;
   text-decoration: none;
   color: lime;
