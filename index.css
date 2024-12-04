@@ -1,5 +1,7 @@
 .instructions {
   position: relative;
+  top: 130px;
+  color: lime;
 }
 .users {
   position: relative;
@@ -58,8 +60,10 @@ html, body {
 .container {
     display: flex;
     flex-direction: column;
-    max-width: 750px;
+    max-width: 400px;
     margin: 30px auto;
+    position: relative;
+    right: 350px;
 }
 
 .protest-strike-regular, header {
@@ -99,9 +103,9 @@ img {
     text-align: center;
     font-family: 'Rubik' ,sans-serif;
     margin: 5px;
-    height: 50px;
+    height: 10px;
     position: relative;
-    bottom: 200px;
+    top: 10px;
 }
 
 .bigbutton {
@@ -114,8 +118,7 @@ img {
     text-align: center;
     font-family: 'Rubik' ,sans-serif;
     position: relative;
-    bottom: 200px;
-
+    top: 20px;
 }
 
 ul li:hover {
@@ -151,12 +154,12 @@ ul li:hover {
 li {
     display: row;
     word-spacing: 3px; 
-    display: 750px;
+    display: 400px;
     margin: 0.1rem;
-    width: 800px;
+    width: 400px;
     border-radius: 15px;
     position: relative;
-    top: 100px;
+    top: 10px;
     z-index: 1;
    
 }
@@ -164,6 +167,6 @@ li {
   color: blue;
 }
 video {
-    width: 50%;
+    width: 100%;
     height: 0%;
 }
