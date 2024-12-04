@@ -1,7 +1,7 @@
 .instructions {
   position: relative;
   left: 50px;
-  top: 25px;
+  top: 40px;
   text-decoration: none;
   color: lime;
   z-index: 6;
@@ -107,6 +107,7 @@ img {
     font-family: 'Rubik' ,sans-serif;
     margin: 5px;
     height: 10px;
+    width: 300px;
     position: relative;
     left: 125px;
     top: 10px;
@@ -123,7 +124,7 @@ img {
     font-family: 'Rubik' ,sans-serif;
     position: relative;
     top: 65px;
-    right: 100px;
+    right: 125px;
     width: 300px;
     height: 35px;
 }
