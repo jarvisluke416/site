@@ -82,5 +82,5 @@ function appendItemToShoppingListEl(item) {
         let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
         
         remove(exactLocationOfItemInDB)
-    })
+    });
 
