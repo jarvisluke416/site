@@ -47,29 +47,49 @@ function appendItemToShoppingListEl(item) {
     
     let newEl = document.createElement("li");
     
-    // Check if the item is a video URL (You can adjust this for specific platforms like YouTube or Vimeo)
+    // Check if the item is a video URL (YouTube, Vimeo, or .mp4 file)
     if (itemValue.includes("youtube.com") || itemValue.includes("vimeo.com") || itemValue.endsWith(".mp4")) {
-        // Create a video element
-        let videoEl = document.createElement("video");
-        videoEl.setAttribute("controls", "true");
-        videoEl.setAttribute("width", "100%");
-        videoEl.setAttribute("height", "auto");
         
-        // Check if the video URL is an MP4 or embed URL
-        if (itemValue.endsWith(".mp4")) {
-            videoEl.setAttribute("src", itemValue); // Direct video URL
-        } else {
-            // For YouTube/Vimeo, you can use an iframe or similar approach
+        // Create a container for the video
+        let videoContainer = document.createElement("div");
+        videoContainer.style.width = "100%"; // Make sure the container spans full width
+
+        // Check if it's a YouTube URL
+        if (itemValue.includes("youtube.com")) {
+            const youtubeEmbedUrl = itemValue.replace("watch?v=", "embed/");
             let iframe = document.createElement("iframe");
-            iframe.setAttribute("src", itemValue);
+            iframe.setAttribute("src", youtubeEmbedUrl);
             iframe.setAttribute("frameborder", "0");
             iframe.setAttribute("allowfullscreen", "true");
             iframe.setAttribute("width", "100%");
             iframe.setAttribute("height", "auto");
-            newEl.appendChild(iframe);
+            videoContainer.appendChild(iframe);
         }
         
-        newEl.appendChild(videoEl);
+        // Check if it's a Vimeo URL
+        else if (itemValue.includes("vimeo.com")) {
+            const vimeoEmbedUrl = itemValue.replace("vimeo.com", "player.vimeo.com/video");
+            let iframe = document.createElement("iframe");
+            iframe.setAttribute("src", vimeoEmbedUrl);
+            iframe.setAttribute("frameborder", "0");
+            iframe.setAttribute("allowfullscreen", "true");
+            iframe.setAttribute("width", "100%");
+            iframe.setAttribute("height", "auto");
+            videoContainer.appendChild(iframe);
+        }
+        
+        // Check if it's an MP4 URL
+        else if (itemValue.endsWith(".mp4")) {
+            let videoEl = document.createElement("video");
+            videoEl.setAttribute("controls", "true");
+            videoEl.setAttribute("width", "100%");
+            videoEl.setAttribute("height", "auto");
+            videoEl.setAttribute("src", itemValue); // Direct MP4 URL
+            videoContainer.appendChild(videoEl);
+        }
+
+        // Append the video container to the list item
+        newEl.appendChild(videoContainer);
     } else {
         // Otherwise, display it as text (default behavior)
         newEl.textContent = itemValue;
