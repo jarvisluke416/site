@@ -1,6 +1,5 @@
 .instructions {
   position: relative;
-  bottom: 200px;
 }
 .users {
   position: relative;
@@ -102,7 +101,6 @@ img {
     margin: 5px;
     height: 50px;
     position: relative;
-    bottom: 100px;
 }
 
 .bigbutton {
@@ -115,7 +113,6 @@ img {
     text-align: center;
     font-family: 'Rubik' ,sans-serif;
     position: relative;
-    bottom: 100px;
 }
 
 ul li:hover {
