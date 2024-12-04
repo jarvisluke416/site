@@ -1,3 +1,7 @@
+.biginput, .bigbutton {
+    z-index: 1000; /* Higher than other elements to ensure visibility */
+}
+
 .instructions {
   position: relative;
   left: 50px;
