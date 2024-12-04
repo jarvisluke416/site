@@ -1,9 +1,10 @@
 .instructions {
   position: relative;
-  bottom: 250px;
+  bottom: 175px;
   left: 50px;
   text-decoration: none;
   color: lime;
+  z-index: 6;
 }
 .users {
   position: relative;
