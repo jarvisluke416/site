@@ -77,10 +77,11 @@ function appendItemToShoppingListEl(item) {
     shoppingListEl.append(newEl);
 }
 
- newEl.addEventListener("click", function() {
-        
+   newEl.addEventListener("click", function() {
+       
         let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
-        
+       
         remove(exactLocationOfItemInDB)
-    });
-
+    })
+     shoppingListEl.append(newEl)
+}
