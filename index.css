@@ -1,7 +1,7 @@
 .instructions {
   position: relative;
   left: 50px;
-  top: 40px;
+  top: 55px;
   text-decoration: none;
   color: lime;
   z-index: 6;
@@ -126,7 +126,7 @@ img {
     top: 65px;
     right: 125px;
     width: 300px;
-    height: 35px;
+    height: 50px;
 }
 
 ul li:hover {
