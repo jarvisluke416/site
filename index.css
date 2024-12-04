@@ -120,7 +120,8 @@ img {
     text-align: center;
     font-family: 'Rubik' ,sans-serif;
     position: relative;
-    top: 20px;
+    top: 40px;
+    width: 300px;
 }
 
 ul li:hover {
