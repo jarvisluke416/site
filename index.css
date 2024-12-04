@@ -1,3 +1,7 @@
+.instructions {
+  position: relative;
+  top: 200px;
+}
 .users {
   position: relative;
   right: 175px;
