@@ -76,7 +76,7 @@ html, body {
 }
 
 .containertwo {
-    position: fixed;
+    position: relative;
 }
 .protest-strike-regular, header {
     font-family: "Rubik Spray Paint", system-ui;
