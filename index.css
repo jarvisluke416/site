@@ -70,6 +70,9 @@ html, body {
     right: 100px;
 }
 
+.containertwo {
+    position: fixed;
+}
 .protest-strike-regular, header {
     font-family: "Rubik Spray Paint", system-ui;
     font-size: 400%;
