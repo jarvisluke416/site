@@ -101,6 +101,7 @@ img {
     margin: 5px;
     height: 50px;
     position: relative;
+    bottom: 500px;
 }
 
 .bigbutton {
@@ -113,6 +114,8 @@ img {
     text-align: center;
     font-family: 'Rubik' ,sans-serif;
     position: relative;
+    bottom: 500px;
+
 }
 
 ul li:hover {
