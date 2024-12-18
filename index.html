@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
-        <input class="entercomment" type="text" id="input-field" placeholder="Comment" required pattern="[A-Za-z0-9\s]+" title="Only letters, numbers, and spaces allowed">
+        <input class="entercomment" type="text" id="input-field" placeholder="Enter your comment" required pattern="[A-Za-z0-9\s]+" title="Only letters, numbers, and spaces allowed" required>
         <input class="biginput" type="text" id="input-field" placeholder="Enter Link">
         <button class="bigbutton" id="add-button">ENTER</button>
      </div>
@@ -64,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const userInput = document.getElementById('user-input');
                 const addUserButton = document.getElementById('add-user-button');
                 const userList = document.getElementById('user-list');
-                
                 // Function to add items to the shopping list
                 function addItemToList() {
                     const inputText = inputField.value.trim();
