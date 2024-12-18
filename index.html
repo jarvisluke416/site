@@ -5,79 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
     <link rel="stylesheet" href="index.css">
-    <style>
-        /* Ensure the body and shopping list container have a light background */
-        body {
-            background-color: white; /* Set background color to white */
-            font-family: Arial, sans-serif;
-        }
-
-        .container {
-            margin-top: 20px;
-        }
-
-        #shopping-list {
-            list-style-type: none; /* Removes default bullet points */
-            padding: 0;
-        }
-
-        #shopping-list li {
-            padding: 10px;
-            margin: 5px 0;
-            background-color: #f4f4f4;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between; /* Align the delete button on the right */
-            align-items: center;
-        }
-
-        .delete-button {
-            background-color: red;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .delete-button:hover {
-            background-color: darkred;
-        }
-
-        /* Styling for input fields */
-        .entername, .entercomment, .biginput {
-            padding: 10px;
-            margin: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .bigbutton {
-            padding: 10px 15px;
-            background-color: blue;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .bigbutton:hover {
-            background-color: darkblue;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
         <!-- Display the list of comments or entries -->
         <ul id="shopping-list">
-            <!-- List items will be dynamically added here -->
+            <li></li>
+            <li></li>
+            <li></li>
         </ul>
     </div>
-    
+
     <div class="containertwo">
         <!-- Input fields for Name, Comment, and Link -->
-        <input class="entername" type="email" id="input-name" placeholder="Email Or Name" required title="Please enter a valid email or name">
+        <input class="entername" type="text" id="input-name" placeholder="Email Or Name" required pattern="[A-Za-z0-9\s]+" title="Only letters, numbers, and spaces allowed">
         <input class="entercomment" type="text" id="input-comment" placeholder="Enter your comment" required pattern="[A-Za-z0-9\s]+" title="Only letters, numbers, and spaces allowed">
         <input class="biginput" type="text" id="input-link" placeholder="Enter Link">
         
@@ -99,17 +40,18 @@
                 const comment = commentInput.value.trim();
                 const link = linkInput.value.trim();
 
-                if (!name || !comment || !link) {
-                    alert("Please fill in all fields!");
-                    return; // Prevent adding if any field is empty
+                // Only check if name and comment are filled
+                if (!name || !comment) {
+                    alert("Please fill in the Name and Comment fields!");
+                    return; // Prevent adding if name or comment is empty
                 }
 
-                // Create a new list item with name, comment, and link
+                // Create a new list item with name, comment, and optional link
                 const newItem = document.createElement('li');
-                newItem.innerHTML = `Name: ${name}, Comment: ${comment}, Link: ${link}`;
+                newItem.innerHTML = `Name: ${name}, Comment: ${comment}`;
 
-                // Optionally, you can create a link from the URL input
-                if (isValidUrl(link)) {
+                // Optionally, create a link from the URL input (if it's valid)
+                if (link && isValidUrl(link)) {
                     const linkElement = document.createElement('a');
                     linkElement.href = link;
                     linkElement.textContent = link;
