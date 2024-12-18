@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chat</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <center><header class="Protest Strike">Anonym<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgauTmvBC7TaihcTSu_VCbh0E9TN1cx3xh8h9g3DCcOFCfCv0GSdFXYNPCmNjL5TRA0uDhs0jNfbvLxO5MqB6E1k8lPAnh-UO6gZsrWYCVSvEZMgxbGrhcOGUoo2ZjuoDymYEPUSRbIDmZNd-0Gq0lf2rhXIBuIv6v2KEubo-h-W4JkOf4qnNiw7Cr3/s1600/anarchy.png" height="40" width="50">us Graffiti Chat</header></a></center>
+
+        <div class="container">
+         
+        <ul id="shopping-list">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul></div>
+        <div class="containertwo">
+        <input class="biginput" type="text" id="input-field" placeholder="Enter Name">
+        <input class="biginput" type="text" id="input-field" placeholder="Enter text & Source code">
+        <button class="bigbutton" id="add-button">ENTER</button>
+     </div>
+    <a class="instructions" href="https://docs.google.com/document/d/13lxnlwr1RC9AXqaoRxc_pR-AcwcpRUAMbH-8EYjA--g/edit?usp=sharing" target="_blank"><h3 style="color:Lime;">Instructions how2 upload/embed videos</h3></a>
+
+<script>
+    // Get the elements
+    const addUserButton = document.getElementById('add-user-button');
+    const userInput = document.getElementById('user-input');
+    const userList = document.getElementById('user-list');
+
+    // Event listener for the button click
+    addUserButton.addEventListener('click', function() {
+        // Get the username from the input field
+        const username = userInput.value.trim();
+
+        // If the username is not empty
+        if (username) {
+            // Create a new list item
+            const listItem = document.createElement('li');
+            listItem.textContent = username;
+
+            // Append the new list item to the user list
+            userList.appendChild(listItem);
+
+            // Hide the input and button
+            userInput.style.display = 'none';
+            addUserButton.style.display = 'none';
+        } else {
+            alert("Please enter a username");
+        }
+
+        // Clear the input field (optional)
+        userInput.value = '';
+    });
+</script>
+
+       
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const inputField = document.getElementById('input-field');
+                const addButton = document.getElementById('add-button');
+                const shoppingList = document.getElementById('shopping-list');
+                const userInput = document.getElementById('user-input');
+                const addUserButton = document.getElementById('add-user-button');
+                const userList = document.getElementById('user-list');
+                
+                // Function to add items to the shopping list
+                function addItemToList() {
+                    const inputText = inputField.value.trim();
+                    if (inputText !== '') {
+                        const newItem = document.createElement('li');
+                        newItem.textContent = inputText;
+                        shoppingList.appendChild(newItem);
+                        inputField.value = '';  // Clear input field after adding item
+                    }
+                }
+
+                // Function to add a user to the user list
+                function addUserToList() {
+                    const userName = userInput.value.trim();
+                    if (userName !== '') {
+                        const newUser = document.createElement('li');
+                        newUser.textContent = userName;
+                        userList.appendChild(newUser);
+                        userInput.value = '';  // Clear input field after adding user
+                    }
+                }
+
+                // Event listener for the 'Add to Wall' button (Shopping List)
+                addButton.addEventListener('click', addItemToList);
+
+                // Event listener for the Enter key press in the input field (Shopping List)
+                inputField.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter') {
+                        addItemToList();
+                    }
+                });
+
+                // Event listener for the 'Add User' button
+                addUserButton.addEventListener('click', addUserToList);
+
+                // Event listener for the Enter key press in the user input field
+                userInput.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter') {
+                        addUserToList();
+                    }
+                });
+            });
+        </script>
+      <script src="functions.js" type="module"></script>
+      <script src="index.js" type="module"></script>
+        <script>
+    // Example of rendering messages from the database
+    const databaseMessages = [
+        { username: 'John', message: 'Hello world!' },
+        { username: '', message: 'Anonymous message' },
+        { username: 'Jane', message: 'How are you?' }
+    ];
+
+    const shoppingList = document.getElementById('shopping-list');
+
+    // Function to render messages from the database
+    function renderMessages(messages) {
+        messages.forEach((msg) => {
+            const newItem = document.createElement('li');
+            if (msg.username) {
+                newItem.textContent = `${msg.username}: ${msg.message}`;
+            } else {
+                newItem.textContent = msg.message;
+            }
+            shoppingList.appendChild(newItem);
+        });
+    }
+
+    // Render the messages on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        renderMessages(databaseMessages);
+    });
+</script>
+</body>
+</html>
