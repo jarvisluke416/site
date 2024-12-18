@@ -4,88 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
-    <style>
-        /* Basic styling for the page */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            margin: 20px;
-        }
-
-        .containertwo {
-            margin-top: 20px;
-        }
-
-        /* Input fields styling */
-        input {
-            padding: 10px;
-            margin: 10px 0;
-            width: 100%;
-            max-width: 400px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        /* Button styling */
-        .bigbutton {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        /* Shopping list styling */
-        #shopping-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        #shopping-list li {
-            background-color: #fff;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Delete button styling */
-        .delete-button {
-            padding: 5px 10px;
-            background-color: red;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-            margin-left: 10px;
-        }
-
-        /* Hover effect for the delete button */
-        .delete-button:hover {
-            background-color: darkred;
-        }
-    </style>
+    <link rel="stylesheet" href="index.css">
+    <!-- Add Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js"></script>
 </head>
 <body>
     <div class="container">
         <!-- Display the list of comments or entries -->
-        <ul id="shopping-list">
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
+        <ul id="shopping-list"></ul>
     </div>
-
+    
     <div class="containertwo">
         <!-- Input fields for Name, Comment, and Link -->
         <input class="entername" type="text" id="input-name" placeholder="Email Or Name" required pattern="[A-Za-z0-9\s]+" title="Only letters, numbers, and spaces allowed">
@@ -97,6 +26,21 @@
     </div>
 
     <script>
+        // Firebase Configuration (replace with your own Firebase config values)
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = firebase.database(app);
+
         document.addEventListener('DOMContentLoaded', () => {
             const nameInput = document.getElementById('input-name');
             const commentInput = document.getElementById('input-comment');
@@ -104,56 +48,72 @@
             const addButton = document.getElementById('add-button');
             const shoppingList = document.getElementById('shopping-list');
 
+            // Load stored comments on page load
+            loadComments();
+
             // Handle button click to add all inputs
             addButton.addEventListener('click', function() {
                 const name = nameInput.value.trim();
                 const comment = commentInput.value.trim();
                 const link = linkInput.value.trim();
 
-                // Only check if name and comment are filled
                 if (!name || !comment) {
-                    alert("Please fill in the Name and Comment fields!");
-                    return; // Prevent adding if name or comment is empty
+                    alert("Please fill in all fields!");
+                    return; // Prevent adding if any required field is empty
                 }
 
-                // Create a new list item with name, comment, and optional link
-                const newItem = document.createElement('li');
-                newItem.innerHTML = `Name: ${name}, Comment: ${comment}`;
+                // Generate new comment object
+                const newComment = {
+                    name: name,
+                    comment: comment,
+                    link: link || null
+                };
 
-                // Optionally, create a link from the URL input (if it's valid)
-                if (link && isValidUrl(link)) {
-                    const linkElement = document.createElement('a');
-                    linkElement.href = link;
-                    linkElement.textContent = link;
-                    linkElement.target = '_blank';
-                    newItem.appendChild(linkElement);
-                }
+                // Push new comment to Firebase
+                const commentsRef = database.ref('comments');
+                const newCommentRef = commentsRef.push();
+                newCommentRef.set(newComment);
 
-                // Create a delete button for each list item
-                const deleteButton = document.createElement('button');
-                deleteButton.textContent = 'Delete';
-                deleteButton.classList.add('delete-button'); // Add styling class for the button
-                deleteButton.addEventListener('click', function() {
-                    shoppingList.removeChild(newItem); // Remove the list item when clicked
-                });
-
-                newItem.appendChild(deleteButton);
-                shoppingList.appendChild(newItem);
-                
                 // Clear inputs after adding
                 nameInput.value = '';
                 commentInput.value = '';
                 linkInput.value = '';
             });
 
-            // Helper function to check if the URL is valid
-            function isValidUrl(url) {
-                try {
-                    new URL(url);
-                    return true;
-                } catch (_) {
-                    return false;
-                }
+            // Load comments from Firebase
+            function loadComments() {
+                const commentsRef = database.ref('comments');
+                commentsRef.on('value', (snapshot) => {
+                    shoppingList.innerHTML = ''; // Clear the list before reloading
+                    const comments = snapshot.val();
+                    for (const id in comments) {
+                        const comment = comments[id];
+                        const newItem = document.createElement('li');
+                        newItem.textContent = `Name: ${comment.name}, Comment: ${comment.comment}`;
+
+                        // Optionally, create a link from the URL input
+                        if (comment.link) {
+                            const linkElement = document.createElement('a');
+                            linkElement.href = comment.link;
+                            linkElement.textContent = comment.link;
+                            linkElement.target = '_blank';
+                            newItem.appendChild(linkElement);
+                        }
+
+                        // Add delete button for each item
+                        const deleteButton = document.createElement('button');
+                        deleteButton.textContent = 'Delete';
+                        deleteButton.addEventListener('click', function() {
+                            newItem.remove(); // Remove the list item
+                            // Remove from Firebase
+                            const commentRef = database.ref('comments').child(id);
+                            commentRef.remove();
+                        });
+                        newItem.appendChild(deleteButton);
+
+                        shoppingList.appendChild(newItem);
+                    }
+                });
             }
         });
     </script>
