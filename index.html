@@ -3,128 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat</title>
-    <link rel="stylesheet" href="index.css">
-    <!-- Add Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js"></script>
-    <link rel="stylesheet" href="index.css">
-
+    <title>Comment Section</title>
+    <!-- Include Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Display the list of comments or entries -->
-        <ul id="shopping-list"></ul>
-    </div>
-    
-    <div class="containertwo">
-        <!-- Input fields for Name, Comment, and Link -->
-        <input class="entername" type="text" id="input-name" placeholder="Email Or Name" required pattern="[A-Za-z0-9\s]+" title="Only letters, numbers, and spaces allowed">
-        <input class="entercomment" type="text" id="input-comment" placeholder="Enter your comment" required pattern="[A-Za-z0-9\s]+" title="Only letters, numbers, and spaces allowed">
-        <input class="biginput" type="text" id="input-link" placeholder="Enter Link">
-        
-        <!-- Button to submit all input fields -->
-        <button class="bigbutton" id="add-button">ENTER</button>
+
+    <!-- Name and Comment Inputs -->
+    <div class="comment-section">
+        <input type="text" id="input-name" placeholder="Enter your name" required />
+        <textarea id="input-comment" placeholder="Enter your comment" required></textarea>
+        <button id="add-comment-button">Post Comment</button>
     </div>
 
-    <script>
-        // Firebase Configuration (replace with your own Firebase config values)
-        const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_PROJECT_ID.appspot.com",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
-        };
+    <!-- Display Comments -->
+    <ul id="comments-list"></ul>
 
-        // Initialize Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-        const database = firebase.database(app);
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const nameInput = document.getElementById('input-name');
-            const commentInput = document.getElementById('input-comment');
-            const linkInput = document.getElementById('input-link');
-            const addButton = document.getElementById('add-button');
-            const shoppingList = document.getElementById('shopping-list');
-
-            // Load stored comments on page load
-            loadComments();
-
-            // Handle button click to add all inputs
-            addButton.addEventListener('click', function() {
-                const name = nameInput.value.trim();
-                const comment = commentInput.value.trim();
-                const link = linkInput.value.trim();
-
-                if (!name || !comment) {
-                    alert("Please fill in all required fields!");
-                    return; // Prevent adding if any required field is empty
-                }
-
-                // Generate new comment object
-                const newComment = {
-                    name: name,
-                    comment: comment,
-                    link: link || null
-                };
-
-                // Push new comment to Firebase
-                const commentsRef = database.ref('comments');
-                const newCommentRef = commentsRef.push();
-                newCommentRef.set(newComment);
-
-                // Clear inputs after adding
-                nameInput.value = '';
-                commentInput.value = '';
-                linkInput.value = '';
-            });
-
-            // Load comments from Firebase
-            function loadComments() {
-                const commentsRef = database.ref('comments');
-                commentsRef.on('value', (snapshot) => {
-                    shoppingList.innerHTML = ''; // Clear the list before reloading
-                    const comments = snapshot.val();
-                    if (comments) {
-                        for (const id in comments) {
-                            const comment = comments[id];
-                            const newItem = document.createElement('li');
-                            newItem.textContent = `Name: ${comment.name}, Comment: ${comment.comment}`;
-
-                            // Optionally, create a link from the URL input
-                            if (comment.link) {
-                                const linkElement = document.createElement('a');
-                                linkElement.href = comment.link;
-                                linkElement.textContent = comment.link;
-                                linkElement.target = '_blank';
-                                newItem.appendChild(linkElement);
-                            }
-
-                            // Add delete button for each item
-                            const deleteButton = document.createElement('button');
-                            deleteButton.textContent = 'Delete';
-                            deleteButton.addEventListener('click', function() {
-                                newItem.remove(); // Remove the list item
-                                // Remove from Firebase
-                                const commentRef = database.ref('comments').child(id);
-                                commentRef.remove();
-                            });
-                            newItem.appendChild(deleteButton);
-
-                            shoppingList.appendChild(newItem);
-                        }
-                    } else {
-                        // Handle case where there are no comments
-                        shoppingList.innerHTML = "<li>No comments yet.</li>";
-                    }
-                });
-            }
-        });
-    </script>
-    <script src="index.js"></script>
-    <script src="functions.js"></script>
+    <!-- Link to External JavaScript File -->
+ <script src="functions.js"></script>
+ <script src="index.js"></script>
 </body>
 </html>
