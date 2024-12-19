@@ -58,7 +58,7 @@
                 const link = linkInput.value.trim();
 
                 if (!name || !comment) {
-                    alert("Please fill in all fields!");
+                    alert("Please fill in all required fields!");
                     return; // Prevent adding if any required field is empty
                 }
 
@@ -86,32 +86,37 @@
                 commentsRef.on('value', (snapshot) => {
                     shoppingList.innerHTML = ''; // Clear the list before reloading
                     const comments = snapshot.val();
-                    for (const id in comments) {
-                        const comment = comments[id];
-                        const newItem = document.createElement('li');
-                        newItem.textContent = `Name: ${comment.name}, Comment: ${comment.comment}`;
+                    if (comments) {
+                        for (const id in comments) {
+                            const comment = comments[id];
+                            const newItem = document.createElement('li');
+                            newItem.textContent = `Name: ${comment.name}, Comment: ${comment.comment}`;
 
-                        // Optionally, create a link from the URL input
-                        if (comment.link) {
-                            const linkElement = document.createElement('a');
-                            linkElement.href = comment.link;
-                            linkElement.textContent = comment.link;
-                            linkElement.target = '_blank';
-                            newItem.appendChild(linkElement);
+                            // Optionally, create a link from the URL input
+                            if (comment.link) {
+                                const linkElement = document.createElement('a');
+                                linkElement.href = comment.link;
+                                linkElement.textContent = comment.link;
+                                linkElement.target = '_blank';
+                                newItem.appendChild(linkElement);
+                            }
+
+                            // Add delete button for each item
+                            const deleteButton = document.createElement('button');
+                            deleteButton.textContent = 'Delete';
+                            deleteButton.addEventListener('click', function() {
+                                newItem.remove(); // Remove the list item
+                                // Remove from Firebase
+                                const commentRef = database.ref('comments').child(id);
+                                commentRef.remove();
+                            });
+                            newItem.appendChild(deleteButton);
+
+                            shoppingList.appendChild(newItem);
                         }
-
-                        // Add delete button for each item
-                        const deleteButton = document.createElement('button');
-                        deleteButton.textContent = 'Delete';
-                        deleteButton.addEventListener('click', function() {
-                            newItem.remove(); // Remove the list item
-                            // Remove from Firebase
-                            const commentRef = database.ref('comments').child(id);
-                            commentRef.remove();
-                        });
-                        newItem.appendChild(deleteButton);
-
-                        shoppingList.appendChild(newItem);
+                    } else {
+                        // Handle case where there are no comments
+                        shoppingList.innerHTML = "<li>No comments yet.</li>";
                     }
                 });
             }
