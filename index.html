@@ -10,14 +10,17 @@
 <body>
 
     <!-- Name and Comment Inputs -->
-    <div class="comment-section">
-        <input type="text" id="input-name" placeholder="Enter your name" required />
-        <textarea id="input-comment" placeholder="Enter your comment" required></textarea>
-        <button id="add-comment-button">Post Comment</button>
-    </div>
+    <div id="comment-section">
+    <h2>Comments</h2>
+    <input type="text" id="input-name" placeholder="Your name" />
+    <textarea id="input-comment" placeholder="Write your comment..."></textarea>
+    <button id="add-comment-button">Post Comment</button>
 
-    <!-- Display Comments -->
-    <ul id="comments-list"></ul>
+    <ul id="comments-list">
+        <!-- Comments will appear here -->
+    </ul>
+</div>
+
 
     <!-- Link to External JavaScript File -->
  <script src="functions.js"></script>
