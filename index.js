@@ -1,64 +1,67 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
-// Firebase Configuration
+// Initialize Firebase
 const appSettings = {
-    databaseURL: "https://realtime-database-65290-default-rtdb.firebaseio.com/"
+  databaseURL: "https://realtime-database-65290-default-rtdb.firebaseio.com/"
 };
 
 const app = initializeApp(appSettings);
 const database = getDatabase(app);
 
-// Reference to the comments in Firebase
+// Reference to the comments node in Firebase
 const commentsRef = ref(database, "comments");
 
-// Elements from the page
+// Get the input fields and button
 const nameInput = document.getElementById("input-name");
 const commentInput = document.getElementById("input-comment");
-const addCommentButton = document.getElementById("add-comment-button");
+const submitButton = document.getElementById("submit-comment");
 const commentsList = document.getElementById("comments-list");
 
-// Event listener for the Post Comment button
-addCommentButton.addEventListener("click", function() {
-    const name = nameInput.value.trim();
-    const comment = commentInput.value.trim();
+// Listen for submit button click to add a comment
+submitButton.addEventListener("click", function() {
+  const name = nameInput.value.trim();
+  const comment = commentInput.value.trim();
 
-    if (name && comment) {
-        // Create a new comment object
-        const newComment = {
-            name: name,
-            comment: comment
-        };
+  // Only submit if both fields are filled
+  if (name && comment) {
+    const newComment = {
+      name: name,
+      comment: comment
+    };
 
-        // Push new comment to Firebase
-        push(commentsRef, newComment)
-            .then(() => {
-                console.log("Comment added successfully!");
-                // Clear input fields
-                nameInput.value = '';
-                commentInput.value = '';
-            })
-            .catch((error) => {
-                console.error("Error adding comment to Firebase:", error);
-            });
-    } else {
-        alert("Please fill out both the name and comment fields.");
-    }
+    // Push the new comment to Firebase
+    push(commentsRef, newComment);
+
+    // Clear the input fields
+    nameInput.value = "";
+    commentInput.value = "";
+  } else {
+    alert("Please enter both name and comment!");
+  }
 });
 
-// Fetch and display comments from Firebase
-onValue(commentsRef, (snapshot) => {
-    commentsList.innerHTML = ""; // Clear existing comments
+// Listen for changes to the comments in Firebase
+onValue(commentsRef, function(snapshot) {
+  commentsList.innerHTML = ""; // Clear the existing comments
+  if (snapshot.exists()) {
     const comments = snapshot.val();
+    for (const id in comments) {
+      const comment = comments[id];
+      const commentItem = document.createElement("li");
+      commentItem.textContent = `${comment.name}: ${comment.comment}`;
 
-    if (comments) {
-        const commentsArray = Object.entries(comments);
-        commentsArray.forEach(([id, commentData]) => {
-            const listItem = document.createElement("li");
-            listItem.innerHTML = `<strong>${commentData.name}:</strong> ${commentData.comment}`;
-            commentsList.appendChild(listItem);
-        });
-    } else {
-        commentsList.innerHTML = "No comments yet.";
+      // Add a delete button
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "Delete";
+      deleteButton.addEventListener("click", function() {
+        remove(ref(database, `comments/${id}`));  // Remove from Firebase
+      });
+
+      commentItem.appendChild(deleteButton);
+      commentsList.appendChild(commentItem);
     }
+  } else {
+    commentsList.innerHTML = "No comments yet.";
+  }
 });
